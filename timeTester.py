@@ -82,7 +82,7 @@ set term png
 set output 'graphs/%i-%i_smooth.png'
 set xtic auto
 set ytic auto
-set title "Thread-Amount and Time Relation (%i clicks)"
+set title "Thread-Amount and Time Relation (%i clicks, smooth)"
 set xlabel "Amount of Threads"
 set ylabel "Elapsed Time"
 set xr [0:%i]
