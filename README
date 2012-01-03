@@ -1,7 +1,7 @@
 A tool to calculate the relationship between the time to gain a specific amount of clicks on a webpage and the number of different threads you use.
 
 The file names are formatted as following:
-[data/makePlot]_numberOfClicks-numberOfThreads
+[data/makePlot]_numberOfClicks-numberOfThreads[_smooth]
 
 All other files are't noteworthy.
 
