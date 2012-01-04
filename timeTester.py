@@ -34,19 +34,15 @@ for i in range(1, THREADMAX + 1):
 	val = int(r[i][0].strip())
 	print >> fd, "%i   %i" % (key, val)
 	fd.flush()
-	print ">>> Write: \"%i   %i\"..." % (key, val)
+#	print ">>> Write: \"%i   %i\"..." % (key, val)
 
 fd.close()
 
 t = []
 for i in r.values():
 	t.append(int(i[0].strip()))
-print r
-print t
 m = max(t)
-print "max: ",m
 MAXTIME = round(int(m) + 5 * pow(10, len(str(m))-2) , -(len(str(m))-1)) # Very cool expression to round up
-print "MAXSCALE:  ", MAXTIME
 
 print "Now drawing graph."
 print ">> Generating corresponding plotter..."
