@@ -6,5 +6,6 @@ The file names are formatted as following:
 All other files are't noteworthy. (You may consider to take a look at "resources/multiThreadLinker.py" as its really nice, and has a ping-like output!)
 
 To use, only execute timeTester.py (python2.7).
+If you want to recreate some data, just delete the corresponding "data_X-Y" file. 
 
 Fancy graphics are located in "graphs/" , furthermore they are generated with gnuplot.

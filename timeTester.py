@@ -33,15 +33,20 @@ for i in range(1, THREADMAX + 1):
 	key = int(i)
 	val = int(r[i][0].strip())
 	print >> fd, "%i   %i" % (key, val)
+	fd.flush()
 	print ">>> Write: \"%i   %i\"..." % (key, val)
 
 fd.close()
 
 t = []
 for i in r.values():
-	t.append(i)
-m = max(t)[0]
+	t.append(int(i[0].strip()))
+print r
+print t
+m = max(t)
+print "max: ",m
 MAXTIME = round(int(m) + 5 * pow(10, len(str(m))-2) , -(len(str(m))-1)) # Very cool expression to round up
+print "MAXSCALE:  ", MAXTIME
 
 print "Now drawing graph."
 print ">> Generating corresponding plotter..."
@@ -69,7 +74,7 @@ r.close()
 e.close()
 w.close()
 
-if THREADMAX > 4:
+if THREADMAX >= 4:
 	print ">> Generating interpolated plotter..."
 	sample = '''# auto generated plotter
 	set autoscale
