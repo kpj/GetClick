@@ -30,14 +30,10 @@ for i in range(1, THREADMAX + 1):
 	print ">> Running with %i thread(s)..." % i
 	# r[number of threads] = duration of requests
 	r[i] = execCurl(i)
-
-print "Finished loading information."
-print "Now write it to file."
-for i in r.keys():
 	key = int(i)
 	val = int(r[i][0].strip())
-	print ">> Write: \"%i   %i\"..." % (key, val)
 	print >> fd, "%i   %i" % (key, val)
+	print ">>> Write: \"%i   %i\"..." % (key, val)
 
 fd.close()
 
@@ -45,7 +41,7 @@ t = []
 for i in r.values():
 	t.append(i)
 m = max(t)[0]
-MAXTIME = round(int(m) + 5 * pow(10, len(str(m))-2) , -(len(str(m))-1))
+MAXTIME = round(int(m) + 5 * pow(10, len(str(m))-2) , -(len(str(m))-1)) # Very cool expression, to round up
 
 print "Now drawing graph."
 print ">> Generating corresponding plotter..."
