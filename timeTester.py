@@ -41,7 +41,7 @@ t = []
 for i in r.values():
 	t.append(i)
 m = max(t)[0]
-MAXTIME = round(int(m) + 5 * pow(10, len(str(m))-2) , -(len(str(m))-1)) # Very cool expression, to round up
+MAXTIME = round(int(m) + 5 * pow(10, len(str(m))-2) , -(len(str(m))-1)) # Very cool expression to round up
 
 print "Now drawing graph."
 print ">> Generating corresponding plotter..."
@@ -69,28 +69,30 @@ r.close()
 e.close()
 w.close()
 
-print ">> Generating interpolated plotter..."
-sample = '''# auto generated plotter
-set autoscale
-unset log
-unset label
-set term png
-set output 'graphs/%i-%i_smooth.png'
-set xtic auto
-set ytic auto
-set title "Thread-Amount and Time Relation (%i clicks, smooth)"
-set xlabel "Amount of Threads"
-set ylabel "Elapsed Time"
-set xr [0:%i]
-set yr [0:%i]
-plot 'plainData/data_%i-%i' using 1:2 smooth csplines title 'Developement of Time' with linespoints
-# hope you enjoy''' % (COUNTER, THREADMAX, COUNTER, THREADMAX, MAXTIME, COUNTER, THREADMAX)
-fd = open('plotter/makePlot_%i-%i_smooth' % (COUNTER, THREADMAX), 'a+')
-print >> fd, sample
-fd.close()
-print ">> Drawing interpolated graph..."
-r, w, e = popen2.popen3('gnuplot plotter/makePlot_%i-%i_smooth' % (COUNTER, THREADMAX))
-r.close()
-e.close()
-w.close()
-
+if THREADMAX > 4:
+	print ">> Generating interpolated plotter..."
+	sample = '''# auto generated plotter
+	set autoscale
+	unset log
+	unset label
+	set term png
+	set output 'graphs/%i-%i_smooth.png'
+	set xtic auto
+	set ytic auto
+	set title "Thread-Amount and Time Relation (%i clicks, smooth)"
+	set xlabel "Amount of Threads"
+	set ylabel "Elapsed Time"
+	set xr [0:%i]
+	set yr [0:%i]
+	plot 'plainData/data_%i-%i' using 1:2 smooth csplines title 'Developement of Time' with linespoints
+	# hope you enjoy''' % (COUNTER, THREADMAX, COUNTER, THREADMAX, MAXTIME, COUNTER, THREADMAX)
+	fd = open('plotter/makePlot_%i-%i_smooth' % (COUNTER, THREADMAX), 'a+')
+	print >> fd, sample
+	fd.close()
+	print ">> Drawing interpolated graph..."
+	r, w, e = popen2.popen3('gnuplot plotter/makePlot_%i-%i_smooth' % (COUNTER, THREADMAX))
+	r.close()
+	e.close()
+	w.close()
+else:
+	print ">> Cannot generate interpolated graph (less than 5 points)..."
