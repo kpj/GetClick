@@ -7,4 +7,4 @@ All other files are't noteworthy. (You may consider to take a look at "resources
 
 To use, only execute timeTester.py (python2.7).
 
-Fancy graphics are located in "graphs/" .
+Fancy graphics are located in "graphs/" , furthermore they are generated with gnuplot.
