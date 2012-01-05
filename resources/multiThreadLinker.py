@@ -17,6 +17,19 @@ counter = 0
 running = True
 times = []
 
+def sighandler(signum, frame):
+	global running, endT
+	running = False
+	endT = time.time()
+	showStats()
+	sys.exit()
+for i in [x for x in dir(signal) if x.startswith("SIG")]:
+	try:
+		signum = getattr(signal, i)
+		signal.signal(signum, sighandler)
+	except:
+		pass
+
 # NEEDED FUNCTIONS
 def genMDEV():
 	avg = sum(times)/len(times)
