@@ -1,4 +1,4 @@
-import popen2, sys, url2load
+import popen2, sys, url2load, os
 
 if len(sys.argv) != 3:
 	print "Usage: <how many clicks> <how many threads at maximum>"
@@ -23,7 +23,12 @@ def execCurl(threadNum):
 
 print "Executing command to gain %i clicks with up to %i threads." % (COUNTER, THREADMAX)
 
-fd = open('plainData/data_%i-%i' % (COUNTER, THREADMAX), 'a+')
+DATANAME = 'data_%i-%i' % (COUNTER, THREADMAX)
+dirs = os.listdir("plainData")
+if DATANAME in dirs:
+	print '>>> Note: This data-set does already exist...'
+
+fd = open(os.path.join('plainData', DATANAME), 'a+')
 
 r = {}
 for i in range(1, THREADMAX + 1):
