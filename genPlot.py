@@ -85,9 +85,7 @@ plot 'plainData/data_%i-%i' using 1:2 smooth csplines title 'Developement of Tim
 			self.dats[i] = self.execCurl(i)[0].strip()
 			key = int(i)
 			val = int(self.dats[i])
-			print key,val
 			self.print2file(os.path.join(self.data_dir, self.data_name), "%i   %i" % (key, val))
-			print self.dats
 
 	def genPlotter(self):
 		self.print2file(os.path.join(self.plotter_dir, self.plotter_name), self.plotter_content % (
@@ -122,5 +120,5 @@ if t.doesExist():
 t.gainData()
 print ">> Generating corresponding plotter..."
 t.genPlotter()
-print ">> Drawing graphs..." if t.smooth else ">> Just drawing normal graph (need at least 4 pointy)..."
+print ">> Drawing graphs..." if t.smooth else ">> Just drawing normal graph (need at least 4 points)..."
 t.drawGraphs()
