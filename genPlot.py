@@ -99,13 +99,13 @@ plot 'plainData/data_%i-%i' using 1:2 smooth csplines title 'Developement of Tim
 		))
 		if self.smooth:
 			self.print2file(os.path.join(self.plotter_dir, self.plotter_name_smooth), self.plotter_content_smooth % (
-			self.COUNTER, 
-			self.THREADMAX, 
-			self.COUNTER, 
-			self.THREADMAX, 
-			self.genMaxtime(), 
-			self.COUNTER, 
-			self.THREADMAX, 
+				self.COUNTER, 
+				self.THREADMAX, 
+				self.COUNTER, 
+				self.THREADMAX, 
+				self.genMaxtime(), 
+				self.COUNTER, 
+				self.THREADMAX, 
 		))
 
 	def drawGraphs(self):

@@ -11,6 +11,8 @@ if len(sys.argv) != 3:
 		print "Usage: %s <url to site> <number of threads> [number of clicks]" % (sys.argv[0])
 		sys.exit()
 link2curl = str(sys.argv[1])
+if not "http" in link2curl:
+	link2curl = "http://" + link2curl
 threads2create = int(sys.argv[2])
 ID = 1
 counter = 0
@@ -47,7 +49,7 @@ def showStats():
 	if maxCounter != -1 and maxCounter <= len(t):
 		print "Just flooding your resource..."
 		sys.exit()
-	print "rtt min/avg/max/mdev = %.3f/%.3f/%.3f/%.3f ms" % (
+	print "cdt min/avg/max/mdev = %.3f/%.3f/%.3f/%.3f ms" % (
 		min(times),
 		sum(times)/len(times),
 		max(times),
